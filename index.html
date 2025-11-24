@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SnarkyWeather</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+  </head>
+  <body>
+    <!-- === HEADER === -->
+    <header class="top-bar">
+      <div class="units-dropdown">
+        <select id="units-select">
+          <option value="metric" selected>Metric (°C, km/h, mm)</option>
+          <option value="imperial">Imperial (°F, mph, in)</option>
+        </select>
+      </div>
+
+      <div class="logo">
+        <h1>SnarkyWeather</h1>
+      </div>
+
+      <div class="search-bar">
+        <input
+          type="text"
+          id="city"
+          class="city-input"
+          placeholder="Search city..."
+        />
+        <button id="search-button" class="search-button">
+          <span class="material-symbols-outlined">search</span>
+        </button>
+        <button class="voice-button">
+          <span class="material-symbols-outlined">mic</span>
+        </button>
+      </div>
+
+      <div class="mode-toggle">
+        <button id="theme-toggle">
+          <span class="material-symbols-outlined">light_mode</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- === MAIN CONTENT === -->
+    <main class="main-container">
+      <!-- Snarky Comment -->
+      <section class="snarky-comment">
+        <p id="snark-text">Loading weather sarcasm...</p>
+      </section>
+
+      <!-- Current Weather Summary -->
+      <section class="weather-summary-container">
+        <img
+          src="./images/sun-cloud-removebg-preview.png"
+          alt="weather-icon"
+          class="weather-summary-img"
+        />
+        <div class="weather-summary-info">
+          <h1 class="temp-text" id="temperature">29 °C</h1>
+          <h2 class="condition-txt regular-txt" id="condition">Condition</h2>
+          <h3 class="location-txt" id="location">City, Country</h3>
+        </div>
+      </section>
+
+      <!-- Extra Conditions -->
+      <section class="weather-conditions-container">
+        <div class="condition-items">
+          <span class="material-symbols-outlined">device_thermostat</span>
+          <div class="condition-info">
+            <h5 class="regular-txt">Feels Like</h5>
+            <h5 class="feels-like-value-txt" id="feels-like">-- °C</h5>
+          </div>
+        </div>
+
+        <div class="condition-items">
+          <span class="material-symbols-outlined">water_drop</span>
+          <div class="condition-info">
+            <h5 class="regular-txt">Humidity</h5>
+            <h5 class="humidity-value-txt" id="humidity">-- %</h5>
+          </div>
+        </div>
+
+        <div class="condition-items">
+          <span class="material-symbols-outlined">air</span>
+          <div class="condition-info">
+            <h5 class="regular-txt">Wind</h5>
+            <h5 class="wind-value-txt" id="wind">-- km/h</h5>
+          </div>
+        </div>
+
+        <div class="condition-items">
+          <span class="material-symbols-outlined">visibility</span>
+          <div class="condition-info">
+            <h5 class="regular-txt">Visibility</h5>
+            <h5 class="visibility-value-txt" id="visibility">-- km</h5>
+          </div>
+        </div>
+
+        <div class="condition-items">
+          <span class="material-symbols-outlined">speed</span>
+          <div class="condition-info">
+            <h5 class="regular-txt">Air Pressure</h5>
+            <h5 class="pressure-value-txt" id="pressure">-- hPa</h5>
+          </div>
+        </div>
+
+        <div class="condition-items">
+          <span class="material-symbols-outlined">wb_sunny</span>
+          <div class="condition-info">
+            <h5 class="regular-txt">UV Index</h5>
+            <h5 class="uv-value-txt" id="uv">--</h5>
+          </div>
+        </div>
+
+        <div class="condition-items">
+          <span class="material-symbols-outlined">sunny</span>
+          <div class="condition-info">
+            <h5 class="regular-txt">Sunrise</h5>
+            <h5 class="sunrise-value-txt" id="sunrise">--:--</h5>
+          </div>
+        </div>
+
+        <div class="condition-items">
+          <span class="material-symbols-outlined">dark_mode</span>
+          <div class="condition-info">
+            <h5 class="regular-txt">Sunset</h5>
+            <h5 class="sunset-value-txt" id="sunset">--:--</h5>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hourly Forecast -->
+      <section class="hourly-section">
+        <div class="day-selector">
+          <button class="day-btn active">Today</button>
+          <button class="day-btn">Tomorrow</button>
+          <!-- More buttons injected by JS -->
+        </div>
+        <div class="hourly-forecast-container" id="hourly-forecast">
+          <div class="hourly-card">
+            <h5 class="hour-text">--</h5>
+            <img
+              src="./images/sun2-removebg-preview.png"
+              alt="hour-icon"
+              class="hourly-icon"
+            />
+            <h5 class="temp-text">-- °C</h5>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7-Day Forecast -->
+      <section class="daily-forecast-container" id="daily-forecast">
+        <div class="daily-card">
+          <h5 class="day-text">Mon</h5>
+          <img src="./images/cloudy.png" alt="daily-icon" class="daily-icon" />
+          <h5 class="high-low">-- / -- °C</h5>
+        </div>
+        <!-- More daily cards injected by JS -->
+      </section>
+
+      <!-- Favorites Section -->
+      <section class="favorites-container">
+        <h3>Favorites</h3>
+        <ul id="favorites-list">
+          <!-- Saved locations injected by JS -->
+        </ul>
+      </section>
+
+      <!-- Compare Locations -->
+      <section class="compare-container">
+        <h3>Compare Locations</h3>
+        <div id="compare-grid">
+          <!-- Multiple location weather summaries injected by JS -->
+        </div>
+      </section>
+    </main>
+
+    <!-- === FOOTER === -->
+    <footer class="footer">
+      <p>SnarkyWeather — “Because your weather deserves sarcasm.”</p>
+      <button class="install-pwa">Install App</button>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
